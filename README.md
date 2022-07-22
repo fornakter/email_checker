@@ -20,4 +20,3 @@ Supported files:
 
 Limit of flies or emails: not found. Checked on 60 files with 12252 emails.
 Works correctly and fast.
-

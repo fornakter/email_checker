@@ -73,12 +73,75 @@ def group_emails_by_domain():
         print(f'Ilosc domen {group_domains[i][0]}: {len(group_domains[i])}')
 
 
-def group_by_domain():
+def sort_by_domain():
+    return print('I sad, its not ready, yet')
+    # all_emails = read_file()
+    # regex = re.compile(r'@[A-Za-z\d.-]+\.[A-Z|a-z]{2,}\b')
+    # # all_emails.sort(regex)
+    # print(all_emails)
+
+
+def number_of_emails():
     all_emails = read_file()
-    regex = re.compile(r'@[A-Za-z\d.-]+\.[A-Z|a-z]{2,}\b')
-    #all_emails.sort(regex)
-    print(all_emails)
+    print('All emails: ', len(all_emails))
+
+
+def read_me():
+    print('''
+----- Readme ----------------------------------------------------------------
+
+Check Your files with email
+
+Functions:
+* Search incorrect emails on files. Ex. test1gmail.com, test2@hotmail
+* Find a word in email. Ex. search word 'stone' in emails. 
+  Result: find 2 emails: astone@domain.com, stonegrade@doom.com
+* Group emails by domain.
+  Result:
+  Nubmer or @gmail.com: 33
+  Number of @domain.com: 21
+  number of @hotmail.com: 4
+* Sort by domain. Alphabetic sorting by domain (not ready yet)
+
+Files must be on '/emails' folder
+
+Supported files:
+  .txt
+  .csv
+
+Limit of flies or emails: not found. Checked on 60 files with 12252 emails.
+Works correctly and fast.
+
+--------------------------------------------------------------------------------
+    ''')
+
+
+def menu():
+    print('''
+    1. Show incorret emails
+    2. Search for string
+    3. Group emails by domain
+    4. Sort by domain - not ready, yet
+    5. Numer of emails
+    6. Readme
+    ''')
+    chose = input('I chose: ')
+    match chose:
+        case '1':
+            show_incorrect_emails()
+        case '2':
+            search_for_string()
+        case '3':
+            group_emails_by_domain()
+        case '4':
+            sort_by_domain()
+        case '5':
+            number_of_emails()
+        case '6':
+            read_me()
+        case _:
+            print('I dont know what is this')
 
 
 if __name__ == '__main__':
-    group_by_domain()
+    menu()

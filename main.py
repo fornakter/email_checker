@@ -3,6 +3,22 @@ import re
 from glob import glob
 
 
+def save_to_file(date_to_save, name_of_file):
+    count_file = 1
+
+    while True:
+        prepear_file = name_of_file + str(count_file) + '.txt'
+        try:
+            open(prepear_file)
+        except:
+            print('Utworzono plik: ', prepear_file)
+            open(prepear_file, 'w').write(date_to_save)
+            break
+        else:
+            print('Nazwa', prepear_file, 'zajeta')
+            count_file += 1
+
+
 def read_file():
     emails_csv = []
     emails_txt = []
@@ -21,6 +37,7 @@ def read_file():
 
 
 def show_incorrect_emails():
+    result = ""
     all_emails = read_file()
     regex = re.compile(r'\b[A-Za-z\d._%+-]+@[A-Za-z\d.-]+\.[A-Z|a-z]{2,}\b')
     count_emails = 0
@@ -30,10 +47,13 @@ def show_incorrect_emails():
         else:
             count_emails += 1
             print(line)
+            result = result + line + "\n"
+    save_to_file(result, "incorrect")
     print('Number of wrong emails: ', count_emails)
 
 
 def search_for_string():
+    result = ""
     all_emails = read_file()
     string_search = input("Enter a word: ")
     count_emails = 0
@@ -42,10 +62,13 @@ def search_for_string():
         if re.findall(string_search, line):
             count_emails += 1
             print(line)
+            result = result + line + '\n'
+    save_to_file(result, "string_result")
     print(count_emails)
 
 
 def group_emails_by_domain():
+    result = ""
     all_emails = read_file()
     emails_sorted = []
     domains = []
@@ -70,7 +93,10 @@ def group_emails_by_domain():
             d += 1
             group_domains.append([])
     for i in range(len(group_domains)):
-        print(f'Ilosc domen {group_domains[i][0]}: {len(group_domains[i])}')
+        result1 = (f'Ilosc domen {group_domains[i][0]}: {len(group_domains[i])}')
+        print(result1)
+        result = result + result1 + '\n'
+    save_to_file(result, "domains")
 
 
 def sort_by_domain():
@@ -84,6 +110,7 @@ def sort_by_domain():
 def number_of_emails():
     all_emails = read_file()
     print('All emails: ', len(all_emails))
+    menu()
 
 
 def read_me():

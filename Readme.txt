@@ -13,6 +13,7 @@ Functions:
 * Sort by domain. Alphabetic sorting by domain (not ready yet)
 
 Files must be on '/emails' folder
+File name does not matter
 
 Supported files:
   .txt

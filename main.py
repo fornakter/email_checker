@@ -11,11 +11,11 @@ def save_to_file(date_to_save, name_of_file):
         try:
             open(prepear_file)
         except:
-            print('Utworzono plik: ', prepear_file)
+            print('The file has been created: ', prepear_file)
             open(prepear_file, 'w').write(date_to_save)
             break
         else:
-            print('Nazwa', prepear_file, 'zajeta')
+            # print('Nazwa', prepear_file, 'zajeta')
             count_file += 1
 
 
@@ -93,7 +93,7 @@ def group_emails_by_domain():
             d += 1
             group_domains.append([])
     for i in range(len(group_domains)):
-        result1 = (f'Ilosc domen {group_domains[i][0]}: {len(group_domains[i])}')
+        result1 = (f'Number of domains {group_domains[i][0]}: {len(group_domains[i])}')
         print(result1)
         result = result + result1 + '\n'
     save_to_file(result, "domains")
@@ -101,6 +101,7 @@ def group_emails_by_domain():
 
 def sort_by_domain():
     return print('I sad, its not ready, yet')
+    menu()
     # all_emails = read_file()
     # regex = re.compile(r'@[A-Za-z\d.-]+\.[A-Z|a-z]{2,}\b')
     # # all_emails.sort(regex)

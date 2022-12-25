@@ -9,13 +9,15 @@ def save_to_file(date_to_save, name_of_file):
     while True:
         prepear_file = name_of_file + str(count_file) + '.txt'
         try:
+            # check file exist
             open(prepear_file)
         except:
+            # if file don`t exist - error, then create file with prepear_file name
             print('The file has been created: ', prepear_file)
             open(prepear_file, 'w').write(date_to_save)
             break
         else:
-            # print('Nazwa', prepear_file, 'zajeta')
+            # file exist, add another number to name prepear_file
             count_file += 1
 
 
@@ -115,33 +117,13 @@ def number_of_emails():
 
 
 def read_me():
-    print('''
------ Readme ----------------------------------------------------------------
-
-Check Your files with email
-
-Functions:
-* Search incorrect emails on files. Ex. test1gmail.com, test2@hotmail
-* Find a word in email. Ex. search word 'stone' in emails. 
-  Result: find 2 emails: astone@domain.com, stonegrade@doom.com
-* Group emails by domain.
-  Result:
-  Nubmer or @gmail.com: 33
-  Number of @domain.com: 21
-  number of @hotmail.com: 4
-* Sort by domain. Alphabetic sorting by domain (not ready yet)
-
-Files must be on '/emails' folder
-
-Supported files:
-  .txt
-  .csv
-
-Limit of flies or emails: not found. Checked on 60 files with 12252 emails.
-Works correctly and fast.
-
---------------------------------------------------------------------------------
-    ''')
+    print('\n------------------------- Readme.txt -----------------------------\n')
+    with open('Readme.txt', 'rt') as f:
+        for line in f:
+            line = line.strip('\n')
+            print(line)
+    print('-------------------------------------------------------------------')
+    menu()
 
 
 def menu():

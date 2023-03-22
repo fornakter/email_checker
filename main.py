@@ -100,15 +100,19 @@ def group_emails_by_domain():
         result = result + result1 + '\n'
     save_to_file(result, "domains")
 
-
 def sort_by_domain():
-    return print('I sad, its not ready, yet')
-    menu()
-    # all_emails = read_file()
-    # regex = re.compile(r'@[A-Za-z\d.-]+\.[A-Z|a-z]{2,}\b')
-    # # all_emails.sort(regex)
-    # print(all_emails)
+    all_emails = read_file()
 
+    def get_domain(email):
+        match = re.search("@[\w.]+", email)
+        if match:
+            return match.group()
+        else:
+            return ""
+
+    sorted_emails = sorted(all_emails, key=get_domain)
+    for i in sorted_emails:
+        print(i)
 
 def number_of_emails():
     all_emails = read_file()
@@ -131,7 +135,7 @@ def menu():
     1. Show incorret emails
     2. Search for string
     3. Group emails by domain
-    4. Sort by domain - not ready, yet
+    4. Sort by domain
     5. Numer of emails
     6. Readme
     ''')

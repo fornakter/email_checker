@@ -10,7 +10,7 @@ Functions:
   Nubmer or @gmail.com: 33
   Number of @domain.com: 21
   number of @hotmail.com: 4
-* Sort by domain. Alphabetic sorting by domain (not ready yet)
+* Sort by domain. Alphabetic sorting by domain
 
 Files must be on '/emails' folder
 File name does not matter

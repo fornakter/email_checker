@@ -5,7 +5,6 @@ from glob import glob
 
 def save_to_file(date_to_save, name_of_file):
     count_file = 1
-
     while True:
         prepear_file = name_of_file + str(count_file) + '.txt'
         try:
@@ -24,11 +23,13 @@ def save_to_file(date_to_save, name_of_file):
 def read_file():
     emails_csv = []
     emails_txt = []
+    # load .txt files
     for path in glob('emails/*.txt'):
         with open(path, 'rt') as f:
             for line in f:
                 line = line.strip('\n')
                 emails_txt.append(line)
+    # load .csv files
     for path in glob('emails/*.csv'):
         with open(path, 'r') as f:
             f_csv = csv.DictReader(f, delimiter=';')
@@ -82,6 +83,7 @@ def group_emails_by_domain():
         if reg_search:
             domains.append(reg_search.group())
     domains.sort()
+    # Group domains
     group_domains = [[]]
     pattern_domain = domains[0]
     d = 0
